@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="CSS\CSS.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="modal fade bd-example-modal-sm33 mt-5" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel33" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="iconpopup " style="margin: 0 auto; width: 27%;height: 100%; margin-top: 20%;">
+                    <img id="notick" src="tick.png" width="100%">
+                    <img id="errortick" src="ticknot.png" width="100%" style="display: none;">
+                    <img id="changeimg" src="defender.png" width="100%" style="display: none;">
+                </div>
+
+                <div id="changepass" class=" iconpopup mt-4" style="margin: 0 auto; width: 80%;margin-bottom: 10%;">
+                    <p class="text-center mb-3" style="font-weight: bold;margin-bottom: 2%;font-size: 120%">Đổi mật khẩu</p>
+                    <p class="mt-3" style="margin-bottom: 2%;">Nhập mật khảu củ</p>
+                    <input type="password" name="pass" id="passcurrent" class="form-control ">
+                    <p class="mt-1" style="margin-bottom: 2%;">Nhập mật khẩu mới</p>
+                    <input type="password" name="pass" id="passnew" class="form-control ">
+                    <p class="mt-1" style="margin-bottom: 2%;">Nhập lại mật khẩu mới</p>
+                    <input type="password" name="pass" id="passnewrepeat" class="form-control ">
+                    <p id="notification_change_pass" class="mt-4 text-center mb-0 " style="font-size: 90%;color: red;"></p>
+                    <button class="btn btn-warning float-right mt-3" onclick="Changepassword()">Change</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

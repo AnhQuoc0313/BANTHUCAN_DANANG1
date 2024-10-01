@@ -1,0 +1,284 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="TRANGME.Master.cs" Inherits="BANTHUCAN_DANANG.TRANGCHU" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>TRANGME</title>
+    <meta charset="utf-8" />
+    <link href="CSS\CSS.css" rel="stylesheet" />
+    <style>
+        .auto-style6 {
+            word-wrap: break-word; /* Tự động xuống dòng khi từ quá dài */
+            white-space: normal; /* Cho phép xuống dòng tự nhiên */
+            max-width: 188px; /* Đặt chiều rộng tối đa phù hợp với kích thước ảnh */
+        }
+
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .product-item {
+            width: 23%; /* Mỗi mục chiếm khoảng 1/4 hàng với một chút khoảng cách */
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .product-image {
+            max-width: 100%;
+            height: auto; /* Đảm bảo ảnh co giãn đúng tỉ lệ */
+        }
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        
+        <div class="container-fluid p-0" style="background: url('IMAGE/bg.jpg') no-repeat; background-size: cover; height: calc(100vh);">
+            <p style="font-size: 240%; font-weight: bold; margin-left: 140px; position: absolute; margin-top: 110px;">
+                Tha hồ chọn món mà bạn yêu thích<br>
+                bất cứ lúc nào & Tươi nóng
+                <br>
+            </p>
+            <p style="margin-left: 140px; position: absolute; margin-top: 295px;">
+                Món ăn yêu thích của bạn, giao hàng nhanh chóng, nóng & tươi<br>
+                Tất cả đều là các món ăn tươi sống, vệ sinh an toàn thực phẩm
+            </p>
+            <button id="buttondatngaybayh" onclick="buttondatngaybayh_click" style="margin-left: 140px; position: absolute; margin-top: 370px; background: #fb9200; padding: 10px; border: 0; border-radius: 30px; color: #fff; padding-left: 30px; padding-right: 30px; -webkit-box-shadow: 10px 13px 38px -19px rgba(251,146,0,1); -moz-box-shadow: 10px 13px 38px -19px rgba(251,146,0,1); box-shadow: 10px 13px 38px -19px rgba(251,146,0,1);">
+                Đặt ngay bây giờ
+            </button>
+
+            <nav id="menu" style="position: fixed; z-index: 999;">
+                <input type="checkbox" id="check">
+                <label for="check" class="checkbtn">
+                    <i class="fas fa-bars"></i>
+                </label>
+                <label class="logo">ĐỒ ĂN ĐÀ NẴNG 24h</label>
+                <ul>
+                    <li><a onclick="home_page()" class="active text-white">Trang chủ</a></li>
+                    <li><a data-toggle="modal" data-target=".orderCart">Giỏ hàng
+                        <div style="width: 20px; height: 20px; background: #fb9200; position: absolute; top: 25px; margin-left: 80px; border-radius: 50%">
+                            <p id="order_number" style="position: absolute; margin-top: -30px; margin-left: 7px; color: #fff; font-size: 80%">0</p>
+                        </div>
+                    </a></li>
+                    <li><a>Liên hệ</a></li>
+                    <%--<li><a id="menu_login_button" data-toggle="modal" data-target=".login">Đăng nhập</a></li>--%>
+                    <li>
+                        <a id="menu_login_button" data-toggle="modal" data-target=".login" href="DANGNHAP.aspx">
+                            <asp:Label ID="Donhang" runat="server" Text="Đăng nhập"></asp:Label>
+                        </a>
+                    </li>
+                    <li>
+                        <a id="menu_account_login" class="menu_account_hide" style="display: none;"></a>
+                    </li>
+                </ul>
+                <div>
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+    </asp:ContentPlaceHolder>
+</div>
+                <div id="menu_logout">
+                    <div id="menu_header22" class="khung p-3" style="margin: 0 auto; width: 200px; background: orange; border-radius: 8px; font-family: Helvetica, Arial, sans-serif; padding: 0.5rem; position: absolute; z-index: 999; margin-left: calc(100vw - 250px); margin-top: -25px; display: none;">
+                        <p id="hello_user" class="text-white" style="opacity: 0.9"></p>
+                        <div id="quanlydon" class="box p-1" style="height: 35px; display: none;">
+                            <a href="dashboard.html">
+                                <p><i class="fa fa-list-alt text-white mr-3" aria-hidden="true"></i>Quản lý</p>
+                            </a>
+                        </div>
+                        <div class="box p-1" data-toggle="modal" data-target=".bd-example-modal-lg22" style="height: 35px">
+                            <p><i class="fa fa-list-alt text-white mr-3" aria-hidden="true"></i>Đơn đặt hàng</p>
+                        </div>
+                        <div class="box p-1" data-toggle="modal" data-target=".bd-example-modal-sm33" style="height: 35px">
+                            <p><i class="fa fa-key text-white mr-3" aria-hidden="true"></i>Đổi mật khẩu</p>
+                        </div>
+                        <div class="box p-1" style="height: 35px">
+                            <p onclick="Logout()"><i class="fa fa-sign-out text-white mr-3" aria-hidden="true"></i>Đăng xuất</p>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="modal fade bd-example-modal-lg22" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <asp:Label ID="Label3" runat="server" Text="Label3"></asp:Label>
+                <asp:ListBox ID="ListBox1" runat="server" AutoPostBack="True" DataSourceID="LisLoai" DataTextField="TENDM" DataValueField="IDDM" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged"></asp:ListBox>
+                <asp:ObjectDataSource ID="LisLoai" runat="server"></asp:ObjectDataSource>
+                <%--                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:LocalConnection %>" SelectCommand="SELECT * FROM [DANHMUC]"></asp:SqlDataSource>--%>
+                <asp:ListView ID="ListView1" runat="server" DataSourceID="LisSP" GroupItemCount="4">
+                    <AlternatingItemTemplate>
+                        <td runat="server" style="">
+                            <asp:Image ID="HINHANHLabel" runat="server" ImageUrl='<%# "~/IMAGE/" + Eval("IMG") %>' Width="200px" Height="150px" CssClass="product-image" />
+                            <br />
+                            TENSP:
+                            <div class="auto-style6">
+                                <asp:Label ID="TENSPLabel" runat="server" Text='<%# Eval("TENSP") %>' />
+                            </div>
+                            <br />
+                            MOTASP:
+                            <div class="auto-style6">
+                                <asp:Label ID="MOTASPLabel" runat="server" Text='<%# Eval("MOTASP") %>' />
+                            </div>
+                            <br />
+                            GIASP:
+                            <asp:Label ID="GIASPLabel" runat="server" Text='<%# Eval("GIASP") %>' />
+                            <br />
+                        </td>
+                    </AlternatingItemTemplate>
+                    <EditItemTemplate>
+                        <td runat="server" style="">
+                            <asp:Image ID="HINHANHLabel" runat="server" ImageUrl='<%# "~/IMAGE/" + Eval("IMG") %>' Width="200px" Height="150px" CssClass="product-image" />
+                            <br />
+                            TENSP:
+                            <asp:TextBox ID="TENSPTextBox" runat="server" Text='<%# Bind("TENSP") %>' />
+                            <br />
+                            MOTASP:
+                            <asp:TextBox ID="MOTASPTextBox" runat="server" Text='<%# Bind("MOTASP") %>' />
+                            <br />
+                            GIASP:
+                            <asp:TextBox ID="GIASPTextBox" runat="server" Text='<%# Bind("GIASP") %>' />
+                            <br />
+                            <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Update" />
+                            <br />
+                            <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" />
+                            <br />
+                        </td>
+                    </EditItemTemplate>
+                    <EmptyDataTemplate>
+                        <table runat="server" style="">
+                            <tr>
+                                <td>No data was returned.</td>
+                            </tr>
+                        </table>
+                    </EmptyDataTemplate>
+                    <EmptyItemTemplate>
+                        <td runat="server" />
+                    </EmptyItemTemplate>
+                    <GroupTemplate>
+                        <tr id="itemPlaceholderContainer" runat="server">
+                            <td id="itemPlaceholder" runat="server"></td>
+                        </tr>
+                    </GroupTemplate>
+                    <InsertItemTemplate>
+                        <td runat="server" style="">
+                            <asp:Image ID="HINHANHLabel" runat="server" ImageUrl='<%# "~/IMAGE/" + Eval("IMG") %>' Width="200px" Height="150px" CssClass="product-image" />
+                            <br />
+                            TENSP:
+                            <div class="auto-style6">
+                                <asp:Label ID="TENSPLabel" runat="server" Text='<%# Eval("TENSP") %>' />
+                            </div>
+                            <br />
+                            MOTASP:
+                            <div class="auto-style6">
+                                <asp:Label ID="MOTASPLabel" runat="server" Text='<%# Eval("MOTASP") %>' />
+                            </div>
+                            <br />
+                            GIASP:
+                            <asp:TextBox ID="GIASPTextBox" runat="server" Text='<%# Bind("GIASP") %>' />
+                            <br />
+                            <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insert" />
+                            <br />
+                            <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Clear" />
+                            <br />
+                        </td>
+                    </InsertItemTemplate>
+                    <ItemTemplate>
+                        <td runat="server" style="">
+                            <asp:Image ID="HINHANHLabel" runat="server" ImageUrl='<%# "~/IMAGE/" + Eval("IMG") %>' Width="200px" Height="150px" CssClass="product-image" />
+                            <br />
+                            TENSP:
+                            <div class="auto-style6">
+                                <asp:Label ID="TENSPLabel" runat="server" Text='<%# Eval("TENSP") %>' />
+                            </div>
+                            <br />
+                            MOTASP:
+                            <div class="auto-style6">
+                                <asp:Label ID="MOTASPLabel" runat="server" Text='<%# Eval("MOTASP") %>' />
+                            </div>
+                            <br />
+                            GIASP:
+                            <asp:Label ID="GIASPLabel" runat="server" Text='<%# Eval("GIASP") %>' />
+                            <br />
+                        </td>
+                    </ItemTemplate>
+                    <LayoutTemplate>
+                        <table runat="server">
+                            <tr runat="server">
+                                <td runat="server">
+                                    <table id="groupPlaceholderContainer" runat="server" border="0" style="">
+                                        <tr id="groupPlaceholder" runat="server">
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr runat="server">
+                                <td runat="server" style=""></td>
+                            </tr>
+                        </table>
+                    </LayoutTemplate>
+                    <SelectedItemTemplate>
+                        <td runat="server" style="">IMG:
+                           <asp:Image ID="HINHANHLabel" runat="server" ImageUrl='<%# "~/IMAGE/" + Eval("IMG") %>' />
+                            <br />
+                            TENSP:
+                            <div class="auto-style6">
+                                <asp:Label ID="TENSPLabel" runat="server" Text='<%# Eval("TENSP") %>' />
+                            </div>
+                            <br />
+                            MOTASP:
+                            <div class="auto-style6">
+                                <asp:Label ID="MOTASPLabel" runat="server" Text='<%# Eval("MOTASP") %>' />
+                            </div>
+                            <br />
+                            GIASP:
+                            <asp:Label ID="GIASPLabel" runat="server" Text='<%# Eval("GIASP") %>' />
+                            <br />
+                        </td>
+                    </SelectedItemTemplate>
+                </asp:ListView>
+                <%--                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:LocalConnection %>" SelectCommand="SELECT [IMG], [TENSP], [MOTASP], [GIASP] FROM [SANPHAM]"></asp:SqlDataSource>--%>
+                <asp:ObjectDataSource ID="LisSP" runat="server"></asp:ObjectDataSource>
+
+                <%--<asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                <div class="modal-content p-3" style="width: 150%; left: -200px;">
+                    <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+                    <p class="font-weight-bold" style="font-size: 110%">Đơn đặt hàng</p>
+                    <div data-spy="scroll" data-target="#myScrollspy" data-offset="10" style="height:520px; overflow-y: scroll; padding-top: 5px; padding-right: 10px;">
+                        <table class="table table-borderless">
+                            <thead>
+                                <tr>
+                                    <th scope="col" style="width: 20%; font-size: 115%;">Tên khách hàng</th>
+                                    <th scope="col" style="width: 44%; font-size: 115%;" class="text-center">Món ăn</th>
+                                    <th scope="col" style="width: 18%; font-size: 115%;" class="text-center">Tổng tiền</th>
+                                    <th scope="col" style="width: 18%; font-size: 115%;" class="text-center">Trạng thái</th>
+                                </tr>
+                            </thead>
+                            <tbody id="prinfPaymentUser">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>--%>
+            </div>
+        </div>
+
+        <div class="modal fade bd-example-modal-sm33 mt-5" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel33" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="iconpopup" style="margin: 0 auto; width: 27%; height: 100%; margin-top: 20%;">
+                        <img id="notick" src="tick.png" width="100%">
+                        <img id="errortick" src="ticknot.png" width="100%" style="display: none;">
+                        <img id="changeimg" src="defender.png" width="100%" style="display: none;">
+                        <asp:Label ID="Label2" runat="server" Text="Label2"></asp:Label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%--<div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>--%>
+    </form>
+</body>
+</html>
