@@ -1,43 +1,61 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
-namespace BANTHUCAN_DANANG
+namespace YourNamespace
 {
-    public partial class DANGNHAP : System.Web.UI.Page
+    public partial class DangNhap : Page
     {
-        protected void Page_Load(object sender, EventArgs e)
+        // Sự kiện xử lý khi người dùng nhấn nút "Đăng nhập"
+        protected void Login_Click(object sender, EventArgs e)
         {
+            string username = usernameLogin.Text;
+            string password = passwordLogin.Text;
 
-        }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            SqlConnection myCon = new SqlConnection(ConfigurationManager.ConnectionStrings["LocalConnection"].ConnectionString);
-            myCon.Open();
-            string qry = "SELECT * FROM TAIKHOAN WHERE TENDANGNHAP='" + TextBox1.Text + "' AND MATKHAU='" + TextBox2.Text + "'";
-            SqlCommand cmd = new SqlCommand(qry, myCon);
-            SqlDataReader sdr = cmd.ExecuteReader();
-            if (sdr.Read())
+            // Kiểm tra điều kiện đăng nhập (ví dụ: so sánh với cơ sở dữ liệu)
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
-                Session["username"] = TextBox1.Text;
-                Response.Redirect("TRANGCHU.aspx");
+                statusLogin.Text = "Vui lòng điền đầy đủ thông tin.";
             }
             else
             {
-                Label1.Text = "UserId & Password Is not correct. Try again..!!";
+                // Giả sử kiểm tra trong cơ sở dữ liệu (có thể thay bằng cách gọi API hoặc truy vấn DB)
+                if (username == "admin" && password == "123456") // Chỉ là ví dụ, cần thay bằng kiểm tra từ cơ sở dữ liệu
+                {
+                    statusLogin.Text = "Đăng nhập thành công!";
+                    statusLogin.ForeColor = System.Drawing.Color.Green;
+                    // Chuyển hướng hoặc xử lý logic sau khi đăng nhập thành công
+                }
+                else
+                {
+                    statusLogin.Text = "Tên đăng nhập hoặc mật khẩu không đúng.";
+                    statusLogin.ForeColor = System.Drawing.Color.Red;
+                }
             }
         }
 
-        protected void Button2_Click(object sender, EventArgs e)
+        // Sự kiện xử lý khi người dùng nhấn nút "Đăng ký"
+        protected void Signup_Click(object sender, EventArgs e)
         {
-            Response.Redirect("DANGKY.aspx");
-        }
+            string username = usernameSignup.Text;
+            string password = passwordSignup.Text;
+            string repassword = repasswordSignup.Text;
 
+            // Kiểm tra các điều kiện đăng ký
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(repassword))
+            {
+                statusSignup.Text = "Vui lòng điền đầy đủ thông tin.";
+            }
+            else if (password != repassword)
+            {
+                statusSignup.Text = "Mật khẩu không khớp.";
+            }
+            else
+            {
+                // Giả sử thêm người dùng mới vào cơ sở dữ liệu (cần thay bằng logic thực)
+                statusSignup.Text = "Đăng ký thành công!";
+                statusSignup.ForeColor = System.Drawing.Color.Green;
+                // Có thể thêm logic điều hướng sau khi đăng ký thành công
+            }
+        }
     }
 }

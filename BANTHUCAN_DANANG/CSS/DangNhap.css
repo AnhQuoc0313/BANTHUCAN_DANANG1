@@ -1,0 +1,132 @@
+﻿/* Đặt lại các thuộc tính mặc định */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f0f2f5; /* Màu nền cho trang */
+}
+
+/* Modal */
+.modal-content {
+    display: flex; /* Sử dụng Flexbox để bố trí hình ảnh và form */
+    height: 450px; /* Chiều cao cố định cho modal */
+    margin: auto; /* Căn giữa modal */
+    width: 70%; /* Chiều rộng modal */
+    max-width: 800px; /* Chiều rộng tối đa */
+}
+
+.cart_box {
+    display: flex; /* Sử dụng Flexbox cho toàn bộ modal */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    width: 100%;
+}
+
+/* Hình ảnh đăng nhập */
+.login_img_box,
+.signup_img_box {
+    width: 50%; /* Chiếm 50% chiều rộng modal */
+    height: 100%; /* Chiều cao tối đa */
+    overflow: hidden; /* Ẩn phần hình ảnh bên ngoài khung */
+}
+
+    .login_img_box img,
+    .signup_img_box img {
+        width: 100%; /* Chiều rộng hình ảnh 100% */
+        height: 100%; /* Chiều cao hình ảnh 100% */
+        object-fit: cover; /* Đảm bảo hình ảnh không bị bóp méo */
+    }
+
+/* Form Đăng nhập và Đăng ký */
+#login_box,
+#signup_box {
+    width: 50%; /* Chiếm 50% chiều rộng modal */
+    padding: 70px; /* Padding cho form */
+    background-color: #fff; /* Màu nền trắng cho form */
+    border-radius: 10px; /* Bo góc cho form */
+}
+
+.login_info_box,
+.signup_info_box {
+    display: flex;
+    flex-direction: column; /* Sắp xếp theo cột */
+    justify-content: center; /* Căn giữa theo chiều dọc */
+    height: 100%; /* Chiều cao tối đa */
+}
+
+    .login_info_box p,
+    .signup_info_box p {
+        font-size: 1.4em; /* Kích thước chữ cho tiêu đề */
+        font-weight: bold; /* Đậm */
+        text-align: center; /* Canh giữa */
+        margin-bottom: 20px; /* Khoảng cách phía dưới */
+    }
+
+label {
+    font-weight: bold; /* Đậm cho label */
+    color: #555; /* Màu chữ cho label */
+}
+
+input {
+    width: 100%; /* Chiều rộng 100% cho ô nhập liệu */
+    padding: 10px; /* Padding cho ô nhập liệu */
+    margin: 10px 0; /* Khoảng cách cho ô nhập liệu */
+    border: 1px solid #ccc; /* Viền cho ô nhập liệu */
+    border-radius: 5px; /* Bo góc cho ô nhập liệu */
+}
+
+    input:focus {
+        border-color: #fb9200; /* Màu viền khi ô được chọn */
+        outline: none; /* Ẩn viền ngoài */
+    }
+
+button {
+    width: 100%; /* Chiều rộng 100% cho nút */
+    padding: 12px; /* Padding cho nút */
+    margin-top: 20px; /* Khoảng cách phía trên */
+    border: none; /* Ẩn viền */
+    border-radius: 5px; /* Bo góc cho nút */
+    background-color: #fb9200; /* Màu nền cho nút */
+    color: white; /* Màu chữ trắng cho nút */
+    font-size: 16px; /* Kích thước chữ */
+    cursor: pointer; /* Con trỏ khi rê chuột */
+    transition: background-color 0.3s ease; /* Hiệu ứng chuyển màu nền */
+}
+
+    button:hover {
+        background-color: #e67c00; /* Màu nền khi rê chuột */
+    }
+
+/* Thông báo trạng thái */
+#statusLogin,
+#statusSignup {
+    font-size: 90%; /* Kích thước chữ nhỏ */
+    color: red; /* Màu chữ đỏ */
+    text-align: center; /* Canh giữa */
+    margin-top: 15px; /* Khoảng cách phía trên */
+}
+
+/* Đường dẫn chuyển đổi giữa Đăng nhập và Đăng ký */
+p strong {
+    color: #fb9200; /* Màu chữ cho đường dẫn */
+    cursor: pointer; /* Con trỏ khi rê chuột */
+}
+
+/* Responsive cho thiết bị di động */
+@media (max-width: 768px) {
+    .modal-content {
+        flex-direction: column; /* Chuyển sang dạng cột cho màn hình nhỏ */
+        width: 100%; /* Chiếm toàn bộ chiều rộng */
+    }
+
+    .login_img_box,
+    .signup_img_box,
+    #login_box,
+    #signup_box {
+        height: auto; /* Chiều cao tự động */
+    }
+}
