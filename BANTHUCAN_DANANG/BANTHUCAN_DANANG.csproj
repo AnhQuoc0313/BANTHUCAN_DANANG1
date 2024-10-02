@@ -68,8 +68,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CSS\CSS.css" />
+    <Content Include="CSS\DangNhap.css" />
     <Content Include="DANGNHAP.aspx" />
-    <Content Include="HtmlPage1.html" />
     <Content Include="IMAGE\bg.jpg" />
     <Content Include="IMAGE\foody-draft-beer-novotel-784-636890615885611681.jpg" />
     <Content Include="IMAGE\foody-mobile-10399619_81147453229-527-635863817212109582.jpg" />

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Web.UI;
 
-namespace YourNamespace
+namespace BANTHUCAN_DANANG
 {
-    public partial class DangNhap : Page
+    public partial class DANGNHAP : Page
     {
         // Sự kiện xử lý khi người dùng nhấn nút "Đăng nhập"
         protected void Login_Click(object sender, EventArgs e)
@@ -18,12 +18,12 @@ namespace YourNamespace
             }
             else
             {
-                // Giả sử kiểm tra trong cơ sở dữ liệu (có thể thay bằng cách gọi API hoặc truy vấn DB)
-                if (username == "admin" && password == "123456") // Chỉ là ví dụ, cần thay bằng kiểm tra từ cơ sở dữ liệu
+                // Giả sử kiểm tra trong cơ sở dữ liệu (có thể thay bằng gọi API hoặc truy vấn DB)
+                if (username == "admin" && password == "123456") // Chỉ là ví dụ, cần thay bằng kiểm tra từ DB
                 {
                     statusLogin.Text = "Đăng nhập thành công!";
                     statusLogin.ForeColor = System.Drawing.Color.Green;
-                    // Chuyển hướng hoặc xử lý logic sau khi đăng nhập thành công
+                    // Thực hiện các hành động khác sau khi đăng nhập thành công
                 }
                 else
                 {
