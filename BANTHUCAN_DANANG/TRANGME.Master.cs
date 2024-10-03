@@ -130,5 +130,10 @@ namespace BANTHUCAN_DANANG
                 Response.Redirect("XEMCHITIET.aspx?id=" + SP_ID);
             }
         }
+
+        protected void Dohang_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("XEMDONHANG.aspx");
+        }
     } 
 }

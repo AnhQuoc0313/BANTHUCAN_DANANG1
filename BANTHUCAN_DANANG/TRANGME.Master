@@ -71,7 +71,7 @@
                         <%--<a id="menu_login_button" data-toggle="modal" data-target=".login" href="DANGNHAP.aspx">--%>
                             <asp:LinkButton ID="Dangnhap" runat="server" Text="Đăng nhập" OnClick="Dangnhap_Click"></asp:LinkButton>
                             <asp:LinkButton ID="Dangxuat" runat="server" Text="Đăng xuat" OnClick="Dangxuat_Click"></asp:LinkButton>
-                            <asp:Label ID="User" runat="server" Text=""></asp:Label>
+                            <asp:LinkButton ID="User" runat="server" Text="" OnClick="Dohang_Click"></asp:LinkButton>
                        <%-- </a>--%>
                     </li>
                     <li>

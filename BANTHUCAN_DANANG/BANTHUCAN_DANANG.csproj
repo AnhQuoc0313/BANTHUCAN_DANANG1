@@ -92,6 +92,7 @@
     <Content Include="TRANGCHU.aspx" />
     <Content Include="Web.config" />
     <Content Include="XEMCHITIET.aspx" />
+    <Content Include="XEMDONHANG.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DANGKY.aspx.cs">
@@ -137,6 +138,13 @@
     </Compile>
     <Compile Include="XEMCHITIET.aspx.designer.cs">
       <DependentUpon>XEMCHITIET.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="XEMDONHANG.aspx.cs">
+      <DependentUpon>XEMDONHANG.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="XEMDONHANG.aspx.designer.cs">
+      <DependentUpon>XEMDONHANG.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
