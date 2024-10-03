@@ -11,6 +11,25 @@ namespace BANTHUCAN_DANANG
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            if(Session["username"] == null)
+            {
+                Dangxuat.Visible = false;
+                Dangnhap.Visible = true;
+            }
+
+            if (!IsPostBack)
+            {
+
+                string user = (string)Session["username"];
+                if (user != null && !string.IsNullOrWhiteSpace(user))
+                {
+                    User.Text = user;
+                    Dangxuat.Visible = true;
+                    Dangnhap.Visible = false;
+                }
+            }
+
             LisLoai.TypeName = "BANTHUCAN_DANANG.DBClass";
             LisLoai.SelectMethod = "GetData";
 
@@ -81,6 +100,19 @@ namespace BANTHUCAN_DANANG
 
                 Response.Redirect("XEMTHEM.aspx?id=" + masp);
             }
+        }
+
+        protected void Dangnhap_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("DANGNHAP.aspx");
+        }
+
+        protected void Dangxuat_Click(object sender, EventArgs e)
+        {
+            Dangxuat.Visible = false;
+            Dangnhap.Visible = true;
+            Session["username"] = null;
+            Response.Redirect("TRANGCHU.aspx");
         }
     } 
 }

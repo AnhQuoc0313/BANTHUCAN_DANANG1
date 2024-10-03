@@ -67,9 +67,11 @@
                     <li><a>Liên hệ</a></li>
                     <%--<li><a id="menu_login_button" data-toggle="modal" data-target=".login">Đăng nhập</a></li>--%>
                     <li>
-                        <a id="menu_login_button" data-toggle="modal" data-target=".login" href="DANGNHAP.aspx">
-                            <asp:Label ID="Donhang" runat="server" Text="Đăng nhập"></asp:Label>
-                        </a>
+                        <%--<a id="menu_login_button" data-toggle="modal" data-target=".login" href="DANGNHAP.aspx">--%>
+                            <asp:LinkButton ID="Dangnhap" runat="server" Text="Đăng nhập" OnClick="Dangnhap_Click"></asp:LinkButton>
+                            <asp:LinkButton ID="Dangxuat" runat="server" Text="Đăng xuat" OnClick="Dangxuat_Click"></asp:LinkButton>
+                            <asp:Label ID="User" runat="server" Text=""></asp:Label>
+                       <%-- </a>--%>
                     </li>
                     <li>
                         <a id="menu_account_login" class="menu_account_hide" style="display: none;"></a>

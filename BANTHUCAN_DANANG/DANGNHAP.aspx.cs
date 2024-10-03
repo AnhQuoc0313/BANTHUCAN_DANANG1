@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace BANTHUCAN_DANANG
 {
@@ -8,54 +11,90 @@ namespace BANTHUCAN_DANANG
         // Sự kiện xử lý khi người dùng nhấn nút "Đăng nhập"
         protected void Login_Click(object sender, EventArgs e)
         {
-            string username = usernameLogin.Text;
-            string password = passwordLogin.Text;
+            SqlConnection myCon = new SqlConnection(ConfigurationManager.ConnectionStrings["LocalConnection"].ConnectionString);
 
-            // Kiểm tra điều kiện đăng nhập (ví dụ: so sánh với cơ sở dữ liệu)
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            long result; // Dùng kiểu `long` để đảm bảo có thể chứa 10 chữ số
+
+            if (usernameLogin != null && passwordLogin != null && !string.IsNullOrWhiteSpace(usernameLogin.Text) && !string.IsNullOrWhiteSpace(passwordLogin.Text))
             {
-                statusLogin.Text = "Vui lòng điền đầy đủ thông tin.";
-            }
-            else
-            {
-                // Giả sử kiểm tra trong cơ sở dữ liệu (có thể thay bằng gọi API hoặc truy vấn DB)
-                if (username == "admin" && password == "123456") // Chỉ là ví dụ, cần thay bằng kiểm tra từ DB
+                if ((usernameLogin.Text).ToLower() == "admin")
                 {
-                    statusLogin.Text = "Đăng nhập thành công!";
-                    statusLogin.ForeColor = System.Drawing.Color.Green;
-                    // Thực hiện các hành động khác sau khi đăng nhập thành công
+                    myCon.Open();
+                    string qry = "SELECT * FROM TAIKHOAN WHERE TENDANGNHAP='" + usernameLogin.Text + "' AND MATKHAU='" + passwordLogin.Text + "'";
+                    SqlCommand cmd = new SqlCommand(qry, myCon);
+                    SqlDataReader sdr = cmd.ExecuteReader();
+                    if (sdr.Read())
+                    {
+                        Session["username"] = usernameLogin.Text;
+                        Response.Redirect("TRANGCHU.aspx");
+                    }
+                    else
+                    {
+                        statusLogin.Text = "UserId & Password Is not correct. Try again..!!";
+                    }
                 }
                 else
                 {
-                    statusLogin.Text = "Tên đăng nhập hoặc mật khẩu không đúng.";
-                    statusLogin.ForeColor = System.Drawing.Color.Red;
+                    if (Int64.TryParse(usernameLogin.Text, out result))
+                    {
+                        if (usernameLogin.Text.Length == 10)
+                        {
+                            //Label1.Text = "dang kiem tra sdt";
+                            myCon.Open();
+                            string qry = "SELECT * FROM TAIKHOAN WHERE TENDANGNHAP='" + usernameLogin.Text + "' AND MATKHAU='" + passwordLogin.Text + "'";
+                            SqlCommand cmd = new SqlCommand(qry, myCon);
+                            SqlDataReader sdr = cmd.ExecuteReader();
+                            if (sdr.Read())
+                            {
+                                Session["username"] = usernameLogin.Text;
+                                Response.Redirect("TRANGCHU.aspx");
+                            }
+                            else
+                            {
+                                statusLogin.Text = "UserId & Password Is not correct. Try again..!!";
+                            }
+                        }
+                        else
+                        {
+                            statusLogin.Text = "Số điện thoại không đúng định dạng";
+                        }
+                    }
+                    else
+                    {
+                        if (usernameLogin.Text.Contains("@gmail.com"))
+                        {
+                            //Label1.Text = "dang kiem tra gmail";
+                            myCon.Open();
+                            string qry = "SELECT * FROM TAIKHOAN WHERE TENDANGNHAP='" + usernameLogin.Text + "' AND MATKHAU='" + passwordLogin.Text + "'";
+                            SqlCommand cmd = new SqlCommand(qry, myCon);
+                            SqlDataReader sdr = cmd.ExecuteReader();
+                            if (sdr.Read())
+                            {
+                                Session["username"] = usernameLogin.Text;
+                                Response.Redirect("TRANGCHU.aspx");
+                            }
+                            else
+                            {
+                                statusLogin.Text = "UserId & Password Is not correct. Try again..!!";
+                            }
+                        }
+                        else
+                        {
+                            statusLogin.Text = "Gmail không đúng định dạng";
+                        }
+
+                    }
                 }
-            }
-        }
-
-        // Sự kiện xử lý khi người dùng nhấn nút "Đăng ký"
-        protected void Signup_Click(object sender, EventArgs e)
-        {
-            string username = usernameSignup.Text;
-            string password = passwordSignup.Text;
-            string repassword = repasswordSignup.Text;
-
-            // Kiểm tra các điều kiện đăng ký
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(repassword))
-            {
-                statusSignup.Text = "Vui lòng điền đầy đủ thông tin.";
-            }
-            else if (password != repassword)
-            {
-                statusSignup.Text = "Mật khẩu không khớp.";
             }
             else
             {
-                // Giả sử thêm người dùng mới vào cơ sở dữ liệu (cần thay bằng logic thực)
-                statusSignup.Text = "Đăng ký thành công!";
-                statusSignup.ForeColor = System.Drawing.Color.Green;
-                // Có thể thêm logic điều hướng sau khi đăng ký thành công
+                statusLogin.Text = "Khong duoc bo trong";
             }
+        }
+
+        protected void Button_Click2(object sender, EventArgs e)
+        {
+            Response.Redirect("DANGKY.aspx");
         }
     }
 }
