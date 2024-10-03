@@ -130,7 +130,7 @@
                         </td>
                     </AlternatingItemTemplate>--%>
                     <AlternatingItemTemplate>
-    <td runat="server" style="padding: 10px;">
+    <td runat="server" style="padding: 10px; width:255px;">
         <div class="product-card" style="border: 1px solid #ddd; border-radius: 8px; padding: 16px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center;">
             <!-- Product Image -->
             <asp:Image ID="HINHANHLabel" runat="server" ImageUrl='<%# "~/IMAGE/" + Eval("IMG") %>' Width="200px" Height="180px" CssClass="product-image" style="border-radius: 8px;" />
@@ -141,7 +141,7 @@
             </h3>
             
             <!-- Product Description -->
-            <p style="font-size: 0.9rem; color: #777;">
+            <p style="font-size: 0.9rem; color: #777;height: 33px;">
                 <asp:Label ID="MOTASPLabel" runat="server" Text='<%# Eval("MOTASP") %>' />
             </p>
             
@@ -164,7 +164,7 @@
 </AlternatingItemTemplate>
 
                    <EditItemTemplate>
-    <td runat="server" style="padding: 10px; vertical-align: top;">
+    <td runat="server" style="padding: 10px; vertical-align: top; width:255px;">
         <!-- Product Image -->
         <div style="text-align: center;">
             <asp:Image ID="HINHANHLabel" runat="server" ImageUrl='<%# "~/IMAGE/" + Eval("IMG") %>' Width="200px" Height="180px" style="border-radius: 8px;" />
@@ -207,7 +207,7 @@
                         </tr>
                     </GroupTemplate>
                    <InsertItemTemplate>
-    <td runat="server" style="padding: 10px; vertical-align: top;">
+    <td runat="server" style="padding: 10px; vertical-align: top; width:255px;">
         <!-- Product Image (Not Editable) -->
         <div style="text-align: center;">
             <asp:Image ID="HINHANHLabel" runat="server" ImageUrl='<%# "~/IMAGE/" + Eval("IMG") %>' Width="200px" Height="180px" style="border-radius: 8px;" />
@@ -235,36 +235,36 @@
     </td>
 </InsertItemTemplate>
                     <ItemTemplate>
-        <td runat="server" style="padding: 10px; vertical-align: top;">
-            <div class="product-card" style="border: 1px solid #ddd; border-radius: 8px; padding: 16px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center; max-width: 250px; margin: auto;">
-                <!-- Product Image -->
-                <asp:Image ID="HINHANHLabel" runat="server" ImageUrl='<%# "~/IMAGE/" + Eval("IMG") %>' Width="200px" Height="180px" CssClass="product-image" style="border-radius: 8px;" />
-
-                <!-- Product Name -->
-                <h3 style="font-size: 1.2rem; font-weight: bold; margin-top: 12px; color: #333;">
-                    <asp:Label ID="TENSPLabel" runat="server" Text='<%# Eval("TENSP") %>' />
-                </h3>
-
-                <!-- Product Description -->
-                <p style="font-size: 0.9rem; color: #777; margin: 0 0 10px;">
-                    <asp:Label ID="MOTASPLabel" runat="server" Text='<%# Eval("MOTASP") %>' />
-                </p>
-
-                <!-- Product Price -->
-                <p style="font-size: 1.1rem; font-weight: bold; color: #f60; margin: 0;">
-                    <asp:Label ID="GIASPLabel" runat="server" Text='<%# Eval("GIASP") %>' /> đ
-                </p>
-
-                <!-- Add to Cart Button -->
-                <button style="background-color: #ff6a00; border: none; color: white; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-top: 10px;">
-                    <i class="fas fa-plus"></i> Thêm vào giỏ
-                </button>
-
-                <!-- Product Rating -->
-                <div style="margin-top: 10px; color: #f60;">
-                    ★★★★☆
-                </div>
-            </div>
+        <td runat="server" style="padding: 10px; vertical-align: top; width:255px;">
+            <div class="product-card" style="border: 1px solid #ddd; border-radius: 8px; padding: 16px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center; ">
+    <!-- Product Image -->
+    <asp:Image ID="HINHANHLabel" runat="server" ImageUrl='<%# "~/IMAGE/" + Eval("IMG") %>' Width="200px" Height="180px" CssClass="product-image" style="border-radius: 8px;" />
+    
+    <!-- Product Name -->
+    <h3 style="font-size: 1.2rem; font-weight: bold; margin-top: 12px;">
+        <asp:Label ID="TENSPLabel" runat="server" Text='<%# Eval("TENSP") %>' />
+    </h3>
+    
+    <!-- Product Description -->
+    <p style="font-size: 0.9rem; color: #777;height: 33px;">
+        <asp:Label ID="MOTASPLabel" runat="server" Text='<%# Eval("MOTASP") %>' />
+    </p>
+    
+    <!-- Product Price -->
+    <p style="font-size: 1.1rem; font-weight: bold; color: #f60;">
+        <asp:Label ID="GIASPLabel" runat="server" Text='<%# Eval("GIASP") %>' />
+    </p>
+    
+    <!-- Add to Cart Button -->
+    <button style="background-color: #ff6a00; border: none; color: white; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
+        <i class="fas fa-plus"></i> Thêm vào giỏ
+    </button>
+    
+    <!-- Product Rating -->
+    <div style="margin-top: 10px; color: #f60;">
+        ★★★★☆
+    </div>
+</div>
         </td>
     </ItemTemplate>
                     <LayoutTemplate>
