@@ -3,7 +3,7 @@
     <link href="CSS/CSS.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="product-container" style="justify-content: center">
+    <div class="product-container" style=" display: flex; justify-content: center; align-items: center;">
         <div style="text-align: center;">
             <asp:Label ID="lblSanphamNew" runat="server" Text="Thông tin sản phẩm" CssClass="header" />
             <asp:Label runat="server" ID="lblSPID" Visible="false" Font-Size="12px" />
