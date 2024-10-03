@@ -71,6 +71,7 @@
     <Content Include="CSS\DangNhap.css" />
     <Content Include="DANGKY.aspx" />
     <Content Include="DANGNHAP.aspx" />
+    <Content Include="GIOHANG.aspx" />
     <Content Include="IMAGE\bg.jpg" />
     <Content Include="IMAGE\foody-draft-beer-novotel-784-636890615885611681.jpg" />
     <Content Include="IMAGE\foody-mobile-10399619_81147453229-527-635863817212109582.jpg" />
@@ -90,6 +91,7 @@
     <Content Include="IMAGE\img_login.jpg" />
     <Content Include="TRANGCHU.aspx" />
     <Content Include="Web.config" />
+    <Content Include="XEMCHITIET.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DANGKY.aspx.cs">
@@ -107,6 +109,13 @@
       <DependentUpon>DANGNHAP.aspx</DependentUpon>
     </Compile>
     <Compile Include="DBClass.cs" />
+    <Compile Include="GIOHANG.aspx.cs">
+      <DependentUpon>GIOHANG.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GIOHANG.aspx.designer.cs">
+      <DependentUpon>GIOHANG.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TRANGCHU.aspx.cs">
       <DependentUpon>TRANGCHU.aspx</DependentUpon>
@@ -121,6 +130,13 @@
     </Compile>
     <Compile Include="TRANGME.Master.designer.cs">
       <DependentUpon>TRANGME.Master</DependentUpon>
+    </Compile>
+    <Compile Include="XEMCHITIET.aspx.cs">
+      <DependentUpon>XEMCHITIET.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="XEMCHITIET.aspx.designer.cs">
+      <DependentUpon>XEMCHITIET.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

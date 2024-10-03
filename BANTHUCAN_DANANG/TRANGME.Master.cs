@@ -9,6 +9,7 @@ namespace BANTHUCAN_DANANG
 {
     public partial class TRANGCHU : System.Web.UI.MasterPage
     {
+        int SP_ID;
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -47,7 +48,7 @@ namespace BANTHUCAN_DANANG
             Parameter parameter2 = new Parameter
             {
                 Name = "sql",
-                DefaultValue = "SELECT [IMG], [TENSP], [MOTASP], [GIASP] FROM [SANPHAM]"
+                DefaultValue = "SELECT [IDSP], [IMG], [TENSP], [MOTASP], [GIASP] FROM [SANPHAM]"
             };
             LisSP.SelectParameters.Clear();
             LisSP.SelectParameters.Add(parameter2);
@@ -81,7 +82,7 @@ namespace BANTHUCAN_DANANG
                 Parameter parameter3 = new Parameter
                 {
                     Name = "sql",
-                    DefaultValue = "SELECT [IMG], [TENSP], [MOTASP], [GIASP] FROM [SANPHAM] WHERE IDDM = '" + masp + "'"
+                    DefaultValue = "SELECT [IDSP], [IMG], [TENSP], [MOTASP], [GIASP] FROM [SANPHAM] WHERE IDDM = '" + masp + "'"
                 };
                 LisSP.SelectParameters.Clear();
                 LisSP.SelectParameters.Add(parameter3);
@@ -113,6 +114,21 @@ namespace BANTHUCAN_DANANG
             Dangnhap.Visible = true;
             Session["username"] = null;
             Response.Redirect("TRANGCHU.aspx");
+        }
+
+        protected void Giohang_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("GIOHANG.aspx");
+        }
+
+        protected void ListView1_ItemCommand1(object sender, ListViewCommandEventArgs e)
+        {
+            if (e.CommandName == "XEMCHITIET")
+            {
+
+                SP_ID = Convert.ToInt32(e.CommandArgument);
+                Response.Redirect("XEMCHITIET.aspx?id=" + SP_ID);
+            }
         }
     } 
 }

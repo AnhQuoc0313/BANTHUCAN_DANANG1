@@ -60,6 +60,7 @@
                 <ul>
                     <li><a onclick="home_page()" class="active text-white">Trang chủ</a></li>
                     <li><a data-toggle="modal" data-target=".orderCart">Giỏ hàng
+                        <asp:LinkButton ID="Giohang" Text="Giỏ hàng" OnClick="Giohang_Click" runat="server"></asp:LinkButton>
                         <div style="width: 20px; height: 20px; background: #fb9200; position: absolute; top: 25px; margin-left: 80px; border-radius: 50%">
                             <p id="order_number" style="position: absolute; margin-top: -30px; margin-left: 7px; color: #fff; font-size: 80%">0</p>
                         </div>
@@ -109,7 +110,7 @@
                 <asp:ListBox ID="ListBox1" runat="server" AutoPostBack="True" DataSourceID="LisLoai" DataTextField="TENDM" DataValueField="IDDM" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged"></asp:ListBox>
                 <asp:ObjectDataSource ID="LisLoai" runat="server"></asp:ObjectDataSource>
                 <%--                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:LocalConnection %>" SelectCommand="SELECT * FROM [DANHMUC]"></asp:SqlDataSource>--%>
-                <asp:ListView ID="ListView1" runat="server" DataSourceID="LisSP" GroupItemCount="4">
+                <asp:ListView ID="ListView1" runat="server" DataSourceID="LisSP" GroupItemCount="4" OnItemCommand="ListView1_ItemCommand1">
                    <%-- <AlternatingItemTemplate>
                         <td runat="server" style="">
                             <asp:Image ID="HINHANHLabel" runat="server" ImageUrl='<%# "~/IMAGE/" + Eval("IMG") %>' Width="200px" Height="150px" CssClass="product-image" />
@@ -149,12 +150,12 @@
             <p style="font-size: 1.1rem; font-weight: bold; color: #f60;">
                 <asp:Label ID="GIASPLabel" runat="server" Text='<%# Eval("GIASP") %>' />
             </p>
-            
+            <asp:Button ID="XEMCHITIETButton" runat="server" BackColor="#FF6600" Font-Bold="True" Font-Size="10pt" Text="Xem Chi Tiết" CommandName="XEMCHITIET" CommandArgument='<%# Eval("IDSP") %>' />
             <!-- Add to Cart Button -->
             <button style="background-color: #ff6a00; border: none; color: white; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
-                <i class="fas fa-plus"></i> Thêm vào giỏ
+                <i class="fas fa-plus" </i> Thêm vào giỏ
             </button>
-            
+
             <!-- Product Rating -->
             <div style="margin-top: 10px; color: #f60;">
                 ★★★★☆
@@ -187,7 +188,7 @@
         <br /><br />
 
         <!-- Buttons -->
-        <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Update" CssClass="btn-update" />
+        <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Update"  CssClass="btn-update" />
         <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" CssClass="btn-cancel" />
     </td>
 </EditItemTemplate>
@@ -254,7 +255,7 @@
     <p style="font-size: 1.1rem; font-weight: bold; color: #f60;">
         <asp:Label ID="GIASPLabel" runat="server" Text='<%# Eval("GIASP") %>' />
     </p>
-    
+                <asp:Button ID="XEMCHITIETButton" runat="server" BackColor="#FF6600" Font-Bold="True" Font-Size="10pt" Text="Xem Chi Tiết" CommandName="XEMCHITIET" CommandArgument='<%# Eval("IDSP") %>' />
     <!-- Add to Cart Button -->
     <button style="background-color: #ff6a00; border: none; color: white; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
         <i class="fas fa-plus"></i> Thêm vào giỏ
