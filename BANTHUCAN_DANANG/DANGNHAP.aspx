@@ -21,9 +21,16 @@
       <asp:TextBox ID="usernameLogin" runat="server" CssClass="form-control" Placeholder="Nhập email hoặc số điện thoại"></asp:TextBox>
       <label class="mt-3 font-weight-bold">Mật khẩu</label> 
       <asp:TextBox ID="passwordLogin" runat="server" TextMode="Password" CssClass="form-control" Placeholder="Nhập mật khẩu"></asp:TextBox>
-      <asp:Button ID="btnLogin" runat="server" Text="Đăng nhập" CssClass="btn btn-primary mt-4" OnClick="Login_Click" />
+      <asp:Button ID="btnLogin" runat="server" Text="Đăng nhập" CssClass="btn btn-primary mt-4" OnClick="Login_Click" style="width: 100%;background: #fb9200;border: 0;outline: none;" />
       <asp:Label ID="statusLogin" runat="server" CssClass="text-center mt-4" ForeColor="Red"></asp:Label>
-      <asp:LinkButton ID="LinkButtonRegister" runat="server" Text="Đăng ký" OnClick="Button_Click2" CssClass="text-center mt-3" style="font-size: 90%; color: #fb9200; background: none; border: none; cursor: pointer;" />
+      <%--<asp:LinkButton ID="LinkButtonRegister" runat="server" Text="Đăng ký" OnClick="Button_Click2" CssClass="text-center mt-3" style="font-size: 90%; color: #fb9200; background: none; border: none; cursor: pointer;" />--%>
+              <p style="font-size: 90%">Bạn chưa có tài khoản? 
+    <asp:LinkButton ID="LinkButtonRegister" runat="server" Text="Đăng ký tại đây" 
+                    OnClick="Button_Click2" 
+                    CssClass="text-center mt-3" 
+                    style="font-size: 90%; color: #fb9200; background: none; border: none; cursor: pointer;" />
+</p>
+
       </div>
       </div>
   
