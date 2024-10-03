@@ -150,11 +150,8 @@
             <p style="font-size: 1.1rem; font-weight: bold; color: #f60;">
                 <asp:Label ID="GIASPLabel" runat="server" Text='<%# Eval("GIASP") %>' />
             </p>
-            <asp:Button ID="XEMCHITIETButton" runat="server" BackColor="#FF6600" Font-Bold="True" Font-Size="10pt" Text="Xem Chi Tiết" CommandName="XEMCHITIET" CommandArgument='<%# Eval("IDSP") %>' />
             <!-- Add to Cart Button -->
-            <button style="background-color: #ff6a00; border: none; color: white; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
-                <i class="fas fa-plus" </i> Thêm vào giỏ
-            </button>
+            <asp:Button ID="XEMCHITIETButton" runat="server" style="background-color: #ff6a00; border: none; color: black; padding: 10px 20px; border-radius: 5px; cursor: pointer;" Text="Xem Chi Tiết" CommandName="XEMCHITIET" CommandArgument='<%# Eval("IDSP") %>' />
 
             <!-- Product Rating -->
             <div style="margin-top: 10px; color: #f60;">
@@ -255,12 +252,8 @@
     <p style="font-size: 1.1rem; font-weight: bold; color: #f60;">
         <asp:Label ID="GIASPLabel" runat="server" Text='<%# Eval("GIASP") %>' />
     </p>
-                <asp:Button ID="XEMCHITIETButton" runat="server" BackColor="#FF6600" Font-Bold="True" Font-Size="10pt" Text="Xem Chi Tiết" CommandName="XEMCHITIET" CommandArgument='<%# Eval("IDSP") %>' />
-    <!-- Add to Cart Button -->
-    <button style="background-color: #ff6a00; border: none; color: white; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
-        <i class="fas fa-plus"></i> Thêm vào giỏ
-    </button>
-    
+    <asp:Button ID="XEMCHITIETButton" runat="server" style="background-color: #ff6a00; border: none; color: black; padding: 10px 20px; border-radius: 5px; cursor: pointer;" Text="Xem Chi Tiết" CommandName="XEMCHITIET" CommandArgument='<%# Eval("IDSP") %>' />
+
     <!-- Product Rating -->
     <div style="margin-top: 10px; color: #f60;">
         ★★★★☆
