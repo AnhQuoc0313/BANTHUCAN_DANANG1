@@ -105,12 +105,12 @@
 
         <div class="modal fade bd-example-modal-lg22" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
-                <asp:Label ID="Label3" runat="server" Text="Label3"></asp:Label>
+                <asp:Label ID="Label3" runat="server" Text=""></asp:Label>
                 <asp:ListBox ID="ListBox1" runat="server" AutoPostBack="True" DataSourceID="LisLoai" DataTextField="TENDM" DataValueField="IDDM" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged"></asp:ListBox>
                 <asp:ObjectDataSource ID="LisLoai" runat="server"></asp:ObjectDataSource>
                 <%--                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:LocalConnection %>" SelectCommand="SELECT * FROM [DANHMUC]"></asp:SqlDataSource>--%>
                 <asp:ListView ID="ListView1" runat="server" DataSourceID="LisSP" GroupItemCount="4">
-                    <AlternatingItemTemplate>
+                   <%-- <AlternatingItemTemplate>
                         <td runat="server" style="">
                             <asp:Image ID="HINHANHLabel" runat="server" ImageUrl='<%# "~/IMAGE/" + Eval("IMG") %>' Width="200px" Height="150px" CssClass="product-image" />
                             <br />
@@ -128,33 +128,76 @@
                             <asp:Label ID="GIASPLabel" runat="server" Text='<%# Eval("GIASP") %>' />
                             <br />
                         </td>
-                    </AlternatingItemTemplate>
-                    <EditItemTemplate>
-                        <td runat="server" style="">
-                            <asp:Image ID="HINHANHLabel" runat="server" ImageUrl='<%# "~/IMAGE/" + Eval("IMG") %>' Width="200px" Height="150px" CssClass="product-image" />
-                            <br />
-                            TENSP:
-                            <asp:TextBox ID="TENSPTextBox" runat="server" Text='<%# Bind("TENSP") %>' />
-                            <br />
-                            MOTASP:
-                            <asp:TextBox ID="MOTASPTextBox" runat="server" Text='<%# Bind("MOTASP") %>' />
-                            <br />
-                            GIASP:
-                            <asp:TextBox ID="GIASPTextBox" runat="server" Text='<%# Bind("GIASP") %>' />
-                            <br />
-                            <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Update" />
-                            <br />
-                            <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" />
-                            <br />
-                        </td>
-                    </EditItemTemplate>
+                    </AlternatingItemTemplate>--%>
+                    <AlternatingItemTemplate>
+    <td runat="server" style="padding: 10px;">
+        <div class="product-card" style="border: 1px solid #ddd; border-radius: 8px; padding: 16px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center;">
+            <!-- Product Image -->
+            <asp:Image ID="HINHANHLabel" runat="server" ImageUrl='<%# "~/IMAGE/" + Eval("IMG") %>' Width="200px" Height="180px" CssClass="product-image" style="border-radius: 8px;" />
+            
+            <!-- Product Name -->
+            <h3 style="font-size: 1.2rem; font-weight: bold; margin-top: 12px;">
+                <asp:Label ID="TENSPLabel" runat="server" Text='<%# Eval("TENSP") %>' />
+            </h3>
+            
+            <!-- Product Description -->
+            <p style="font-size: 0.9rem; color: #777;">
+                <asp:Label ID="MOTASPLabel" runat="server" Text='<%# Eval("MOTASP") %>' />
+            </p>
+            
+            <!-- Product Price -->
+            <p style="font-size: 1.1rem; font-weight: bold; color: #f60;">
+                <asp:Label ID="GIASPLabel" runat="server" Text='<%# Eval("GIASP") %>' />
+            </p>
+            
+            <!-- Add to Cart Button -->
+            <button style="background-color: #ff6a00; border: none; color: white; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
+                <i class="fas fa-plus"></i> Thêm vào giỏ
+            </button>
+            
+            <!-- Product Rating -->
+            <div style="margin-top: 10px; color: #f60;">
+                ★★★★☆
+            </div>
+        </div>
+    </td>
+</AlternatingItemTemplate>
+
+                   <EditItemTemplate>
+    <td runat="server" style="padding: 10px; vertical-align: top;">
+        <!-- Product Image -->
+        <div style="text-align: center;">
+            <asp:Image ID="HINHANHLabel" runat="server" ImageUrl='<%# "~/IMAGE/" + Eval("IMG") %>' Width="200px" Height="180px" style="border-radius: 8px;" />
+        </div>
+        <br />
+
+        <!-- Product Name -->
+        TENSP:
+        <asp:TextBox ID="TENSPTextBox" runat="server" Text='<%# Bind("TENSP") %>' Width="250px" />
+        <br /><br />
+
+        <!-- Product Description -->
+        MOTASP:
+        <asp:TextBox ID="MOTASPTextBox" runat="server" Text='<%# Bind("MOTASP") %>' Width="250px" TextMode="MultiLine" Rows="3" />
+        <br /><br />
+
+        <!-- Product Price -->
+        GIASP:
+        <asp:TextBox ID="GIASPTextBox" runat="server" Text='<%# Bind("GIASP") %>' Width="100px" />
+        <br /><br />
+
+        <!-- Buttons -->
+        <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Update" CssClass="btn-update" />
+        <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" CssClass="btn-cancel" />
+    </td>
+</EditItemTemplate>
                     <EmptyDataTemplate>
-                        <table runat="server" style="">
-                            <tr>
-                                <td>No data was returned.</td>
-                            </tr>
-                        </table>
-                    </EmptyDataTemplate>
+        <tr>
+            <td colspan="4" style="text-align: center;">
+                No data available.
+            </td>
+        </tr>
+    </EmptyDataTemplate>
                     <EmptyItemTemplate>
                         <td runat="server" />
                     </EmptyItemTemplate>
@@ -163,48 +206,67 @@
                             <td id="itemPlaceholder" runat="server"></td>
                         </tr>
                     </GroupTemplate>
-                    <InsertItemTemplate>
-                        <td runat="server" style="">
-                            <asp:Image ID="HINHANHLabel" runat="server" ImageUrl='<%# "~/IMAGE/" + Eval("IMG") %>' Width="200px" Height="150px" CssClass="product-image" />
-                            <br />
-                            TENSP:
-                            <div class="auto-style6">
-                                <asp:Label ID="TENSPLabel" runat="server" Text='<%# Eval("TENSP") %>' />
-                            </div>
-                            <br />
-                            MOTASP:
-                            <div class="auto-style6">
-                                <asp:Label ID="MOTASPLabel" runat="server" Text='<%# Eval("MOTASP") %>' />
-                            </div>
-                            <br />
-                            GIASP:
-                            <asp:TextBox ID="GIASPTextBox" runat="server" Text='<%# Bind("GIASP") %>' />
-                            <br />
-                            <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insert" />
-                            <br />
-                            <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Clear" />
-                            <br />
-                        </td>
-                    </InsertItemTemplate>
+                   <InsertItemTemplate>
+    <td runat="server" style="padding: 10px; vertical-align: top;">
+        <!-- Product Image (Not Editable) -->
+        <div style="text-align: center;">
+            <asp:Image ID="HINHANHLabel" runat="server" ImageUrl='<%# "~/IMAGE/" + Eval("IMG") %>' Width="200px" Height="180px" style="border-radius: 8px;" />
+        </div>
+        <br />
+
+        <!-- Product Name -->
+        TENSP:
+        <asp:TextBox ID="TENSPTextBox" runat="server" Text='<%# Bind("TENSP") %>' Width="250px" />
+        <br /><br />
+
+        <!-- Product Description -->
+        MOTASP:
+        <asp:TextBox ID="MOTASPTextBox" runat="server" Text='<%# Bind("MOTASP") %>' Width="250px" TextMode="MultiLine" Rows="3" />
+        <br /><br />
+
+        <!-- Product Price -->
+        GIASP:
+        <asp:TextBox ID="GIASPTextBox" runat="server" Text='<%# Bind("GIASP") %>' Width="100px" />
+        <br /><br />
+
+        <!-- Buttons -->
+        <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insert" CssClass="btn-insert" />
+        <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Clear" CssClass="btn-clear" />
+    </td>
+</InsertItemTemplate>
                     <ItemTemplate>
-                        <td runat="server" style="">
-                            <asp:Image ID="HINHANHLabel" runat="server" ImageUrl='<%# "~/IMAGE/" + Eval("IMG") %>' Width="200px" Height="150px" CssClass="product-image" />
-                            <br />
-                            TENSP:
-                            <div class="auto-style6">
-                                <asp:Label ID="TENSPLabel" runat="server" Text='<%# Eval("TENSP") %>' />
-                            </div>
-                            <br />
-                            MOTASP:
-                            <div class="auto-style6">
-                                <asp:Label ID="MOTASPLabel" runat="server" Text='<%# Eval("MOTASP") %>' />
-                            </div>
-                            <br />
-                            GIASP:
-                            <asp:Label ID="GIASPLabel" runat="server" Text='<%# Eval("GIASP") %>' />
-                            <br />
-                        </td>
-                    </ItemTemplate>
+        <td runat="server" style="padding: 10px; vertical-align: top;">
+            <div class="product-card" style="border: 1px solid #ddd; border-radius: 8px; padding: 16px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center; max-width: 250px; margin: auto;">
+                <!-- Product Image -->
+                <asp:Image ID="HINHANHLabel" runat="server" ImageUrl='<%# "~/IMAGE/" + Eval("IMG") %>' Width="200px" Height="180px" CssClass="product-image" style="border-radius: 8px;" />
+
+                <!-- Product Name -->
+                <h3 style="font-size: 1.2rem; font-weight: bold; margin-top: 12px; color: #333;">
+                    <asp:Label ID="TENSPLabel" runat="server" Text='<%# Eval("TENSP") %>' />
+                </h3>
+
+                <!-- Product Description -->
+                <p style="font-size: 0.9rem; color: #777; margin: 0 0 10px;">
+                    <asp:Label ID="MOTASPLabel" runat="server" Text='<%# Eval("MOTASP") %>' />
+                </p>
+
+                <!-- Product Price -->
+                <p style="font-size: 1.1rem; font-weight: bold; color: #f60; margin: 0;">
+                    <asp:Label ID="GIASPLabel" runat="server" Text='<%# Eval("GIASP") %>' /> đ
+                </p>
+
+                <!-- Add to Cart Button -->
+                <button style="background-color: #ff6a00; border: none; color: white; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-top: 10px;">
+                    <i class="fas fa-plus"></i> Thêm vào giỏ
+                </button>
+
+                <!-- Product Rating -->
+                <div style="margin-top: 10px; color: #f60;">
+                    ★★★★☆
+                </div>
+            </div>
+        </td>
+    </ItemTemplate>
                     <LayoutTemplate>
                         <table runat="server">
                             <tr runat="server">
@@ -220,25 +282,36 @@
                             </tr>
                         </table>
                     </LayoutTemplate>
-                    <SelectedItemTemplate>
-                        <td runat="server" style="">IMG:
-                           <asp:Image ID="HINHANHLabel" runat="server" ImageUrl='<%# "~/IMAGE/" + Eval("IMG") %>' />
-                            <br />
-                            TENSP:
-                            <div class="auto-style6">
-                                <asp:Label ID="TENSPLabel" runat="server" Text='<%# Eval("TENSP") %>' />
-                            </div>
-                            <br />
-                            MOTASP:
-                            <div class="auto-style6">
-                                <asp:Label ID="MOTASPLabel" runat="server" Text='<%# Eval("MOTASP") %>' />
-                            </div>
-                            <br />
-                            GIASP:
-                            <asp:Label ID="GIASPLabel" runat="server" Text='<%# Eval("GIASP") %>' />
-                            <br />
-                        </td>
-                    </SelectedItemTemplate>
+                   <SelectedItemTemplate>
+    <td runat="server" style="padding: 10px; vertical-align: top;">
+        <!-- Product Image -->
+        <div style="text-align: center;">
+            IMG:
+            <asp:Image ID="HINHANHLabel" runat="server" ImageUrl='<%# "~/IMAGE/" + Eval("IMG") %>' Width="200px" Height="180px" style="border-radius: 8px;" />
+        </div>
+        <br />
+
+        <!-- Product Name -->
+        TENSP:
+        <div style="font-weight: bold; font-size: 1.1rem; color: #333;">
+            <asp:Label ID="TENSPLabel" runat="server" Text='<%# Eval("TENSP") %>' />
+        </div>
+        <br />
+
+        <!-- Product Description -->
+        MOTASP:
+        <div style="color: #777; font-size: 0.9rem;">
+            <asp:Label ID="MOTASPLabel" runat="server" Text='<%# Eval("MOTASP") %>' />
+        </div>
+        <br />
+
+        <!-- Product Price -->
+        GIASP:
+        <div style="color: #f60; font-weight: bold;">
+            <asp:Label ID="GIASPLabel" runat="server" Text='<%# Eval("GIASP") %>' /> đ
+        </div>
+    </td>
+</SelectedItemTemplate>
                 </asp:ListView>
                 <%--                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:LocalConnection %>" SelectCommand="SELECT [IMG], [TENSP], [MOTASP], [GIASP] FROM [SANPHAM]"></asp:SqlDataSource>--%>
                 <asp:ObjectDataSource ID="LisSP" runat="server"></asp:ObjectDataSource>

@@ -20,13 +20,21 @@
                             
                                 <label class="mt-3 font-weight-bold">Mật khẩu</label>
                                 <asp:TextBox ID="TextBox2" runat="server" TextMode="Password" CssClass="form-control" aria-describedby="emailHelp" Placeholder="Nhập mật khẩu" style="outline: none;"></asp:TextBox>
+                                <label class="mt-3 font-weight-bold">Nhập lại mật khẩu</label>
                                 <asp:TextBox ID="TextBox3" runat="server" TextMode="Password" CssClass="form-control" aria-describedby="emailHelp" Placeholder="Nhập mật khẩu" style="outline: none;"></asp:TextBox>
 
                                 <asp:Button ID="LoginButton" runat="server" Text="Đăng ký" CssClass="btn btn-primary mt-4" OnClick="Button1_Click" style="width: 100%;background: #fb9200;border: 0;outline: none;" />
                                 <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
                                 <p id="statusLogin" class="text-center mt-4" style="font-size: 90%;color: red;"></p>
 <%--                                <p onclick="move_signup()" class="text-center mt-3" style="font-size: 90%">Bạn chưa có tài khoản, Đăng ký<strong style="color:#fb9200 "> tại đây</strong></p>--%>
-                                                                <asp:LinkButton ID="LinkButtonRegister" runat="server" Text="Đăng Nhập" OnClick="Button1_Click2" CssClass="text-center mt-3" style="font-size: 90%; color: #fb9200; background: none; border: none; cursor: pointer;" />
+                                    <%-- <asp:LinkButton ID="LinkButtonRegister" runat="server" Text="Đăng Nhập" OnClick="Button1_Click2" CssClass="text-center mt-3" style="font-size: 90%; color: #fb9200; background: none; border: none; cursor: pointer;" />--%>
+                                <p style="font-size: 90%">Bạn đã có tài khoản? 
+                                <asp:LinkButton ID="LinkButtonRegister" runat="server" Text="Đăng nhập tại đây" 
+                                OnClick="Button1_Click2" 
+                                   CssClass="text-center mt-3" 
+                                    style="font-size: 90%; color: #fb9200; background: none; border: none; cursor: pointer;" />
+                                </p>
+
                             </div>
                         </div>
                         <div style="clear: both;"></div>
