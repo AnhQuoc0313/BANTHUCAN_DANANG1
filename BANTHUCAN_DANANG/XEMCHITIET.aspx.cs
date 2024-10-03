@@ -19,7 +19,6 @@ namespace BANTHUCAN_DANANG
             {
                 txtSanphamName.Text = "";
                 txtSanphamMota.Text = "";
-                txtSanphamDVT.Text = "";
                 txtDongia.Text = "";
 
                 string ma = Request.QueryString["ID"].ToString();
